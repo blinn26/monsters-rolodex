@@ -17,13 +17,18 @@ class App extends Component {
         <header className='App-header'>
           <img src={logo} className='App-logo' alt='logo' />
           <p>
-            Hi {this.state.name.firstName}
-            {this.state.name.lastName}, I work at {this.state.company}
+            Hi {this.state.name.firstName} {this.state.name.lastName} I work at {this.state.company}
           </p>
           <button
             onClick={() => {
-              this.setState({ name: 'Easton' });
-              console.log(this.state);
+              this.setState(
+                (state, props) => {
+                  return { name: { firstName: 'Easton', lastName: 'Linn' } };
+                },
+                () => {
+                  console.log(this.state);
+                }
+              );
             }}>
             Change Name
           </button>
