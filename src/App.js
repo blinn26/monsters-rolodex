@@ -42,9 +42,14 @@ class App extends Component {
               return monster.name.toLocaleLowerCase().includes(searchString);
             });
 
-            this.setState(() => {
-              return { monsters: filteredMonsters };
-            });
+            this.setState(
+              () => {
+                return { monsters: filteredMonsters };
+              },
+              () => {
+                console.log({ endingArray: this.state.monsters });
+              }
+            );
           }}
         />
 
